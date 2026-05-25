@@ -9,7 +9,7 @@ class ORCR_Retriever:
         # We must use asyncpg's loop wrapper to handle the connection synchronously
         async def fetch_data():
             conn = await asyncpg.connect(
-                user='postgres', password='admin123', database='testdb', host='127.0.0.1', port=5555
+                user='orcrdb_user', password='QLx0ujiPF5Q1yrzrBYiNv5daKwDIZxWo', database='orcrdb', host='dpg-d8a4c9cm0tmc739ot6i0-a.oregon-postgres.render.com', port=5432
             )
             try:
                 return await conn.fetch(
