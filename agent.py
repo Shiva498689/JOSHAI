@@ -24,9 +24,9 @@ from cruduser import init_db_pool, close_db_pool, get_pool, get_by_email, create
 from datetime import datetime
 from pydantic import BaseModel
 
-# load_dotenv()
-PASTE_GROQ_KEYS_HERE = GROQ_API_KEY  # comma separated if multiple
-PASTE_SERPER_KEY_HERE = SERPER_API_KEY
+load_dotenv()
+PASTE_GROQ_KEYS_HERE = os.environ.get("GROQ_API_KEY")  # comma separated if multiple
+PASTE_SERPER_KEY_HERE = os.environ.get("SERPER_API_KEY")
 
 SESSION_STORAGE = {}
 
