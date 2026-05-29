@@ -18,5 +18,4 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          # Replace 'your-hf-username' and 'your-space-name' with your actual HF details
           git push --force https://Haridas498689:$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@huggingface.co/spaces/Haridas498689/joshai_123 main
