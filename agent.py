@@ -12,7 +12,7 @@ from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
-from qdrant import rulesretriever
+from qdrant import RulesRetriever
 from orcr import ORCR_Retriever
 from langgraph.graph import StateGraph, START, END
 from langgraph.graph.message import add_messages
@@ -65,7 +65,7 @@ app.add_middleware(
 )
 
 db_retriever = ORCR_Retriever()
-retriever = rulesretriever()
+retriever = RulesRetriever()
 placement_retriever = placement_Retriever()
 
 # ---------- TOOLS WITH DETAILED LOGS ----------
