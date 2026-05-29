@@ -1,10 +1,9 @@
-
 import os
-from qdrant_client import AsyncQdrantClient, models 
+from qdrant_client import AsyncQdrantClient, models  # 👈 Import models here
 from rank_bm25 import BM25Okapi
 
-api =  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIiwic3ViamVjdCI6ImFwaS1rZXk6MjBhZWUyOWYtMDU5OC00OGM0LWJkMDMtNGU4YTE3MGFiMDEzIn0.gJ9hIQCNvLleJydfDp0PrWVSZE5R7GAbi5cKI5f5GCM"
-url ="QDRANT_URL", "https://3463a70a-212e-4ee7-b027-a65de3c43055.us-east4-0.gcp.cloud.qdrant.io"
+api = os.getenv("QDRANT_API_KEY", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIiwic3ViamVjdCI6ImFwaS1rZXk6MjBhZWUyOWYtMDU5OC00OGM0LWJkMDMtNGU4YTE3MGFiMDEzIn0.gJ9hIQCNvLleJydfDp0PrWVSZE5R7GAbi5cKI5f5GCM")
+url = os.getenv("QDRANT_URL", "https://3463a70a-212e-4ee7-b027-a65de3c43055.us-east4-0.gcp.cloud.qdrant.io")
 
 class RulesRetriever:
      def __init__(self):
@@ -15,6 +14,8 @@ class RulesRetriever:
           )
           
      async def search(self, query: str, numberofchunks: int):
+          # ✅ Use models.Document for text queries when cloud_inference=True
+          # Replace "sentence-transformers/all-MiniLM-L6-v2" with your exact Qdrant Cloud model if different
           response = await self.client.query_points(
                collection_name="rules",
                query=models.Document(
