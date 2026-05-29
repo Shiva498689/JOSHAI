@@ -2,7 +2,7 @@ name: Sync to Hugging Face Spaces
 
 on:
   push:
-    branches: [main] # Change to master if your default branch is master
+    branches: [main]
 
 jobs:
   deploy:
@@ -18,4 +18,9 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git push --force https://Haridas498689:$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@huggingface.co/spaces/Haridas498689/joshai_123 main
+          git config --global user.email "haridas498689@example.com"
+          git config --global user.name "Haridas498689"
+          
+          git remote add hf "https://Haridas498689:${HF_TOKEN}@huggingface.co/spaces/Haridas498689/joshai_123"
+          
+          git push --force hf main
