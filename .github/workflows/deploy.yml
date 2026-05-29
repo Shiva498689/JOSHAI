@@ -18,11 +18,13 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
+          # 1. Configure default git identity
           git config --global user.email "123shivadubey@gmail.com"
           git config --global user.name "Haridas498689"
           
-          git config --global http.https://huggingface.co/.extraheader "Authorization: Bearer $HF_TOKEN"
+          # 2. Force authentication directly into the remote URL without user prompts
+          # We use a placeholder username 'user' and pass your secret token cleanly
+          git remote add hf https://user:${HF_TOKEN}@huggingface.co/spaces/Haridas498689/joshai_123
           
-          git remote add hf https://huggingface.co/spaces/Haridas498689/joshai_123
-          
+          # 3. Push cleanly to the main branch
           git push --force hf main
