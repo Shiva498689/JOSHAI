@@ -12,11 +12,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          lfs: true
+          lfs: true 
 
       - name: Push to Hugging Face
         env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_TOKEN: ${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}
         run: |
           # 1. Configure default git identity
           git config --global user.email "123shivadubey@gmail.com"
@@ -24,7 +24,7 @@ jobs:
           
           # 2. Force authentication directly into the remote URL without user prompts
           # We use a placeholder username 'user' and pass your secret token cleanly
-          git remote add hf https://user:${HF_TOKEN}@huggingface.co/spaces/Haridas498689/joshai_123
+          git remote add hf https://user:$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@huggingface.co/spaces/Haridas498689/joshai_123
           
           # 3. Push cleanly to the main branch
           git push --force hf main
