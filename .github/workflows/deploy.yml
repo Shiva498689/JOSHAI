@@ -18,7 +18,7 @@ jobs:
         env:
           HF_TOKEN: ${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}
         run: |
-          git config --global user.email "haridas498689@example.com"
+          git config --global user.email "123shivadubey@gmail.com"
           git config --global user.name "Haridas498689"
           
           git remote add hf "https://Haridas498689:$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@huggingface.co/spaces/Haridas498689/joshai_123"
